@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,9 +20,12 @@
           </li>
         </ul>
       </div>
-      <form class="d-flex">
-        <button class="btn btn-outline-success me-2" type="button">Main button</button>
-        <button class="btn btn-sm btn-outline-secondary" type="button">Smaller button</button>
+      <div class="form-check form-switch px-1">
+        <input class="form-check-input px-1" type="checkbox" id="flexSwitchCheckDefault">
+        <label class="form-check-label text-light px-1" for="flexSwitchCheckDefault">Dark Mode</label>
+      </div>
+      <form class="d-flex px-3">
+        <button class="btn btn-sm btn-outline-warning" type="button">Connect MetaMask</button>
       </form>
     </div>
   </nav>
