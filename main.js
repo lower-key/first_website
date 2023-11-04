@@ -1,8 +1,16 @@
+// main.js
 function setupThemeToggle() {
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
     const themeToggle = document.getElementById("flexSwitchCheckDefault");
+    
+    const switchElement = document.getElementById("flexSwitchCheckDefault"); //flexSwitchCheckChecked
+    // Set the checked attribute based on the user's preference (true for dark mode, false for light mode)
+    switchElement.checked = prefersDarkScheme.matches;
+
     const root = document.documentElement;
   
+    console.log(prefersDarkScheme)
+    console.log(prefersDarkScheme.matches)
     // Initialize the theme based on the user's OS-level preference
     if (prefersDarkScheme.matches) {
       document.body.classList.add("dark-theme");
@@ -27,10 +35,13 @@ function setupThemeToggle() {
   }
 
 const showAccount = document.querySelector('.showAccount');
+
 function setupMetaMask(){
+  if (typeof window.ethereum !== 'undefined') {
+    console.log('MetaMask is installed!');
+  }
+  
   const ethereumButton = document.querySelector('.enableEthereumButton');
-  
-  
   ethereumButton.addEventListener('click', () => {
     getAccount();
   });
@@ -48,8 +59,27 @@ function setupMetaMask(){
         }
       });
     const account = accounts[0];
-    showAccount.innerHTML = account;
-  }
+    // showAccount.innerHTML = account;
+    
+    
+    const ethereumButton = document.querySelector('.enableEthereumButton');
+
+    
+    ethereumButton.innerHTML = account.slice(0,7) + "..." + account.slice(-5)
+    ethereumButton.disabled = true
+
+    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+    window.ethereum.on('chainChanged', handleChainChanged);
+    function handleChainChanged(chainId) {
+    // We recommend reloading the page, unless you must do otherwise.
+    window.location.reload();
+    }
+    showAccount.innerHTML = "Chain: " + chainId;
+
+    console.log(account)
+    console.log(chainId)
+}
+
 
   
   fetch('navbar.html')
