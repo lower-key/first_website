@@ -43,21 +43,16 @@ const contractABI = [
 ];
 
 const providerUrl = 'https://polygon-mumbai.infura.io/v3/8c13c6be5afa44769076b36a0228320a';
-
-// Create a provider using Infura
 const provider = new ethers.providers.JsonRpcProvider(providerUrl);
-const signer = provider.getSigner()
-console.log(provider)
-console.log(signer)
+
+// const signer = provider.getSigner()
+// console.log(provider)
+// console.log(signer)
 
 // Get the latest Ethereum block number
 provider.getBlockNumber().then((result) => {
   console.log('Latest Block is', result);
 });
-
-// Set the contract address and ABI
-// const contractAddress = '0x6227D189e77eE79b05990fA683ffd1fe46deB41B'; // Replace with your contract's address
-// const contractABI = [ /* Your contract's ABI here */ ];
 
 // Connect to the signer (MetaMask account)
 async function connectToSigner() {
